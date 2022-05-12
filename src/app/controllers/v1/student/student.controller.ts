@@ -7,6 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateStudentDTO } from 'src/domain/dto/student/createStudent.dto';
 import { UpdateStudentDTO } from 'src/domain/dto/student/updateStudent.dto';
 import { CreatStudent } from 'src/domain/use_cases/student/create.student';
@@ -15,6 +16,7 @@ import { GetSutdents } from 'src/domain/use_cases/student/getAll.student';
 import { GetSutdent } from 'src/domain/use_cases/student/getOne.student';
 import { UpdateSutdent } from 'src/domain/use_cases/student/update.student';
 
+@ApiTags('student')
 @Controller('student')
 export class StudentController {
   constructor(
