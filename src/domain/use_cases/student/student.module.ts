@@ -1,24 +1,26 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../../../infrastructure/database/database.module';
-import { StudentProviders } from '../../../infrastructure/database/providers/student.provider';
-import { CreatStudent } from './create.student';
-import { DeleteSutdent } from './delete.student';
-import { GetSutdents } from './getAll.student';
-import { GetSutdent } from './getOne.student';
-import { UpdateSutdent } from './update.student';
+import { studentProvider } from '../../../infrastructure/database/providers/student.provider';
+import {
+  CreatStudent,
+  GetSutdents,
+  GetByIdStudent,
+  UpdateSutdent,
+  DeleteSutdent,
+} from './';
 
 @Module({
   imports: [DatabaseModule],
   providers: [
-  StudentProviders,
-    GetSutdent,
+    ...studentProvider,
+    GetByIdStudent,
     GetSutdents,
     CreatStudent,
     UpdateSutdent,
     DeleteSutdent,
   ],
   exports: [
-    GetSutdent,
+    GetByIdStudent,
     GetSutdents,
     CreatStudent,
     UpdateSutdent,

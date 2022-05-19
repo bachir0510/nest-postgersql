@@ -12,14 +12,14 @@ import { UpdateStudentDTO } from 'src/domain/dto/student/updateStudent.dto';
 import { CreatStudent } from 'src/domain/use_cases/student/create.student';
 import { DeleteSutdent } from 'src/domain/use_cases/student/delete.student';
 import { GetSutdents } from 'src/domain/use_cases/student/getAll.student';
-import { GetSutdent } from 'src/domain/use_cases/student/getOne.student';
+import { GetByIdSutdent } from 'src/domain/use_cases/student/getById.student';
 import { UpdateSutdent } from 'src/domain/use_cases/student/update.student';
 
 @Controller('student')
 export class StudentController {
   constructor(
     private readonly getSudents: GetSutdents,
-    private readonly getStudent: GetSutdent,
+    private readonly getByIdStudent: GetByIdSutdent,
     private readonly createStudent: CreatStudent,
     private readonly updateStudent: UpdateSutdent,
     private readonly deleteStudent: DeleteSutdent,
@@ -32,7 +32,7 @@ export class StudentController {
 
    @Get(':id')
   async getOne(@Param('id') id: number) {
-    return await this.getStudent.call(id);
+    return await this.getByIdStudent.call(id);
   }
 
   @Post()
