@@ -7,10 +7,12 @@ import { GetUserApi } from 'src/domain/use_cases/user/get.user.api';
 export class UserConroller {
   constructor(private readonly getUserApi: GetUserApi) {}
 
+
   @Get('api')
   async findAll() {
   return await this.getUserApi.call()
   
   }
+
 
 }
