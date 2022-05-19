@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
-import { DatabaseProvider } from "./database.providers";
+import { databaseProviders } from "./database.providers";
 
 
 
 @Module({
-    imports:[DatabaseProvider],
-    exports:[DatabaseProvider],
+    providers:[...databaseProviders],
+    exports:[...databaseProviders],
 })
-export class DatabaseModule {}
+export class DatabaseModule {} 
