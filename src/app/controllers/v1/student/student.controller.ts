@@ -23,7 +23,7 @@ import { ValidationHeaders } from '../../../decorators/validatcionHeader.decorat
 @Log()
 @ValidationHeaders()
 @ApiController('student')
-@ApiVersion("v1")
+@ApiVersion()
 @ApiTags("student")
 export class StudentController {
   constructor(
