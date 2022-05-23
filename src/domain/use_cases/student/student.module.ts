@@ -1,16 +1,30 @@
-import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { Student } from "src/domain/entitys/student.entity";
-import { CreatStudent } from "./create.student";
-import { DeleteSutdent } from "./delete.student";
-import { GetSutdents } from "./getAll.student";
-import { GetSutdent } from "./getOne.student";
-import { UpdateSutdent } from "./update.student";
-
+import { Module } from '@nestjs/common';
+import { DatabaseModule } from '../../../infrastructure/database/database.module';
+import { studentProvider } from '../../../infrastructure/database/providers/student.provider';
+import {
+  CreatStudent,
+  GetSutdents,
+  GetByIdStudent,
+  UpdateSutdent,
+  DeleteSutdent,
+} from './';
 
 @Module({
-    imports:[TypeOrmModule.forFeature([Student])],
-    providers:[GetSutdent,GetSutdents,CreatStudent,UpdateSutdent,DeleteSutdent],
-    exports:[GetSutdent,GetSutdents,CreatStudent,UpdateSutdent,DeleteSutdent]
+  imports: [DatabaseModule],
+  providers: [
+    ...studentProvider,
+    GetByIdStudent,
+    GetSutdents,
+    CreatStudent,
+    UpdateSutdent,
+    DeleteSutdent,
+  ],
+  exports: [
+    GetByIdStudent,
+    GetSutdents,
+    CreatStudent,
+    UpdateSutdent,
+    DeleteSutdent,
+  ],
 })
-export class StudentModule{}
+export class StudentModule {}
