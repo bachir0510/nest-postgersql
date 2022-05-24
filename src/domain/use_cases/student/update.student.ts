@@ -1,7 +1,7 @@
 import { Inject, Injectable, NotFoundException } from "@nestjs/common";
-import {  UpdateStudentDTO } from "src/domain/dto/student/updateStudent.dto";
-import { Student } from "src/domain/entitys/student.entity";
 import { Repository } from "typeorm";
+import { UpdateStudentDTO } from "../../dto/student/updateStudent.dto";
+import { Student } from "../../entitys/student.entity";
 
 @Injectable()
 export class UpdateSutdent {
@@ -19,7 +19,7 @@ export class UpdateSutdent {
     return await this.studentRepository.save(updateStudent)
     
     }
-    async callDos(id : number, studentDTO: UpdateStudentDTO){
+    async callTwo(id : number, studentDTO: UpdateStudentDTO){
       return this.studentRepository.update(id, studentDTO)
     }
 }

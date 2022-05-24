@@ -8,31 +8,33 @@ import {
   Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateStudentDTO } from 'src/domain/dto/student/createStudent.dto';
-import { UpdateStudentDTO } from 'src/domain/dto/student/updateStudent.dto';
-import { CreatStudent } from 'src/domain/use_cases/student/create.student';
-import { DeleteSutdent } from 'src/domain/use_cases/student/delete.student';
-import { GetSutdents } from 'src/domain/use_cases/student/getAll.student';
-import { GetByIdSutdent } from 'src/domain/use_cases/student/getById.student';
-import { UpdateSutdent } from 'src/domain/use_cases/student/update.student';
+import { CreateStudentDTO } from '../../../../domain/dto/student/createStudent.dto';
+import { UpdateStudentDTO } from '../../../../domain/dto/student/updateStudent.dto';
+import {
+  CreatStudent,
+  DeleteSutdent,
+  GetByIdStudent,
+  GetSutdents,
+  UpdateSutdent,
+} from '../../../../domain/use_cases/student';
 
 @ApiTags('student')
 @Controller('student')
 export class StudentController {
   constructor(
     private readonly getSudents: GetSutdents,
-    private readonly getByIdStudent: GetByIdSutdent,
+    private readonly getByIdStudent: GetByIdStudent,
     private readonly createStudent: CreatStudent,
     private readonly updateStudent: UpdateSutdent,
     private readonly deleteStudent: DeleteSutdent,
   ) {}
 
   @Get()
-  async getAll()  {
+  async getAll() {
     return await this.getSudents.call();
   }
 
-   @Get(':id')
+  @Get(':id')
   async getOne(@Param('id') id: number) {
     return await this.getByIdStudent.call(id);
   }
@@ -43,8 +45,8 @@ export class StudentController {
   }
 
   @Put(':id')
-  async update(@Body() studentDTO: UpdateStudentDTO, @Param('id') id: number)  {
-    return await this.updateStudent.callDos(id, studentDTO);
+  async update(@Body() studentDTO: UpdateStudentDTO, @Param('id') id: number) {
+    return await this.updateStudent.callTwo(id, studentDTO);
   }
 
   @Delete(':id')

@@ -10,8 +10,8 @@ export const databaseProviders = [
         host: 'localhost',
         port: 5432,
         username: 'admin',
-        password: 'Cordoba_school_DB',
-        database: 'dabase_password',
+        password: 'app',
+        database: 'Cordoba_school_DB',
         entities: [path.resolve(__dirname + '/../../**/*.entity{.ts,.js}')],
         synchronize: true,
       });
@@ -20,5 +20,4 @@ export const databaseProviders = [
     },
   },
 ];
-
 
